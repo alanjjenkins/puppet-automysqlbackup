@@ -4,6 +4,12 @@
 #
 # === Variables
 #
+# [aws_access_key_id]
+#   - AWS access key for backing up to S3.
+#
+# [aws_access_key_secret]
+#   - AWS access key secret for backing up to S3.
+#
 # [bin_dir]
 #   - Location for the automysqlbackup binary file
 #
@@ -43,12 +49,14 @@
 # Copyright 2013 NextRevision, unless otherwise noted.
 
 class automysqlbackup (
-  $bin_dir           = $automysqlbackup::params::bin_dir,
-  $etc_dir           = $automysqlbackup::params::etc_dir,
-  $backup_dir        = $automysqlbackup::params::backup_dir,
-  $install_multicore = undef,
-  $config            = {},
-  $config_defaults   = {},
+  $aws_access_key        = $automysqlbackup::parmas::aws_access_key,
+  $aws_access_key_secret = $automysqlbackup::parmas::aws_access_key,
+  $bin_dir               = $automysqlbackup::params::bin_dir,
+  $etc_dir               = $automysqlbackup::params::etc_dir,
+  $backup_dir            = $automysqlbackup::params::backup_dir,
+  $install_multicore     = undef,
+  $config                = {},
+  $config_defaults       = {},
 ) inherits automysqlbackup::params {
 
   # Ensure valid paths are assigned
